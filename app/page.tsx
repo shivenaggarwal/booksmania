@@ -10,6 +10,7 @@ import BookCard from "@/app/components/BookCard";
 import Reveal from "@/app/components/Reveal";
 import { trendingBooks, staffPicks, featuredBooks } from "@/lib/books";
 import { BookOpen, Sparkles, Heart } from "lucide-react";
+import Image from "next/image";
 
 const ThreeBackground = dynamic(
   () => import("@/app/components/ThreeBackground"),
@@ -60,19 +61,21 @@ function FeaturedBanner() {
             </div>
 
             <div className="relative z-10 flex justify-center">
-              <motion.div
-                whileHover={{ rotateY: -5, scale: 1.02 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                style={{ perspective: "800px", transformStyle: "preserve-3d" }}
-              >
-                <div className="w-[200px] md:w-[240px] aspect-[2/3] book-shadow rounded-sm overflow-hidden">
-                  <img
-                    src={book.coverImage}
-                    alt={book.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
+              <div className="relative w-[200px] md:w-[240px] aspect-[2/3] rounded-sm overflow-hidden book-shadow">
+                <Image
+                  src={book.coverImage}
+                  alt={book.title}
+                  fill
+                  className="object-cover"
+                  sizes="240px"
+                />
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-2 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%)",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </Reveal>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ArrowUpRight } from "lucide-react";
+import { Star } from "lucide-react";
 import { Book } from "@/lib/types";
 
 interface BookCardProps {
@@ -12,9 +12,7 @@ interface BookCardProps {
   variant?: "default" | "featured";
 }
 
-export default function BookCard({ book, index = 0, variant = "default" }: BookCardProps) {
-  const isFeatured = variant === "featured";
-
+export default function BookCard({ book, index = 0 }: BookCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -26,33 +24,24 @@ export default function BookCard({ book, index = 0, variant = "default" }: BookC
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <Link
-        href={`/books/${book.id}`}
-        className={`group block ${isFeatured ? "" : ""}`}
-      >
+      <Link href={`/books/${book.id}`} className="group block">
         {/* Cover */}
-        <div
-          className={`relative overflow-hidden bg-surface-muted rounded-sm mb-4 ${
-            isFeatured ? "aspect-[2/3] w-full" : "aspect-[2/3] w-full"
-          }`}
-        >
+        <div className="relative mb-4 aspect-[2/3] w-full rounded-sm overflow-hidden book-shadow">
           <Image
             src={book.coverImage}
             alt={book.title}
             fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 50vw, 250px"
           />
-
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
-
-          {/* Quick view button */}
-          <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-            <div className="w-9 h-9 rounded-full bg-surface flex items-center justify-center shadow-md">
-              <ArrowUpRight size={14} className="text-text-primary" />
-            </div>
-          </div>
+          {/* Spine edge */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-2 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%)",
+            }}
+          />
         </div>
 
         {/* Info */}
@@ -70,7 +59,9 @@ export default function BookCard({ book, index = 0, variant = "default" }: BookC
             {book.price && (
               <>
                 <span className="text-text-muted text-xs">·</span>
-                <span className="text-xs text-accent font-medium">${book.price}</span>
+                <span className="text-xs text-accent font-medium">
+                  ${book.price}
+                </span>
               </>
             )}
           </div>
@@ -79,3 +70,4 @@ export default function BookCard({ book, index = 0, variant = "default" }: BookC
     </motion.div>
   );
 }
+

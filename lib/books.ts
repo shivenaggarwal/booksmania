@@ -19,6 +19,7 @@ export const featuredBooks: Book[] = [
     pageCount: 288,
     price: 14.99,
     tags: ["bestseller", "fiction", "philosophical"],
+    quote: "It is easy to mourn the lives we aren't living. It is hard to see what is there instead of what isn't.",
   },
   {
     id: "2",
@@ -35,6 +36,7 @@ export const featuredBooks: Book[] = [
     pageCount: 496,
     price: 16.99,
     tags: ["sci-fi", "adventure", "bestseller"],
+    quote: "I penetrated the outer hull of an alien spacecraft with a rock. So I've got that going for me.",
   },
   {
     id: "3",
@@ -51,6 +53,7 @@ export const featuredBooks: Book[] = [
     pageCount: 320,
     price: 13.99,
     tags: ["self-help", "productivity", "bestseller"],
+    quote: "You do not rise to the level of your goals. You fall to the level of your systems.",
   },
   {
     id: "4",
@@ -67,6 +70,7 @@ export const featuredBooks: Book[] = [
     pageCount: 688,
     price: 11.99,
     tags: ["classic", "sci-fi", "epic"],
+    quote: "I must not fear. Fear is the mind-killer. Fear is the little-death that brings total obliteration.",
   },
   {
     id: "5",
@@ -83,6 +87,7 @@ export const featuredBooks: Book[] = [
     pageCount: 256,
     price: 14.99,
     tags: ["finance", "psychology", "bestseller"],
+    quote: "Wealth is what you don't see. It's the cars not purchased, the diamonds not bought.",
   },
   {
     id: "6",
@@ -99,6 +104,7 @@ export const featuredBooks: Book[] = [
     pageCount: 320,
     price: 15.99,
     tags: ["fiction", "literary", "ai"],
+    quote: "There was something very special, but it wasn't inside Josie. It was inside those who loved her.",
   },
   {
     id: "7",
@@ -115,6 +121,7 @@ export const featuredBooks: Book[] = [
     pageCount: 416,
     price: 12.99,
     tags: ["historical", "mythology", "romance"],
+    quote: "I could recognize him by touch alone, by smell; I would know him blind, by the way his breaths came and his feet struck the earth.",
   },
   {
     id: "8",
@@ -131,6 +138,7 @@ export const featuredBooks: Book[] = [
     pageCount: 352,
     price: 13.99,
     tags: ["memoir", "inspiring", "bestseller"],
+    quote: "You can love someone and still choose to say goodbye to them. You can miss a person every day, and still be glad that they are no longer in your life.",
   },
 ];
 

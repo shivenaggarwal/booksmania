@@ -12,6 +12,7 @@ export interface Book {
   pageCount: number;
   price?: number;
   tags: string[];
+  quote?: string;
 }
 
 export interface Category {

@@ -76,7 +76,7 @@ export default function BookDetailPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[180px] md:w-[220px] aspect-[2/3] book-shadow rounded-sm overflow-hidden flex-shrink-0"
+              className="flex-shrink-0 relative w-[180px] md:w-[220px] aspect-[2/3] rounded-sm overflow-hidden book-shadow"
             >
               <Image
                 src={book.coverImage}
@@ -85,6 +85,12 @@ export default function BookDetailPage() {
                 className="object-cover"
                 sizes="220px"
                 priority
+              />
+              <div
+                className="absolute left-0 top-0 bottom-0 w-2 pointer-events-none"
+                style={{
+                  background: "linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%)",
+                }}
               />
             </motion.div>
 
