@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import Image from "next/image";
@@ -15,11 +15,13 @@ function OpenableBook({
   title,
   author,
   quote,
+  onHoverChange,
 }: {
   coverImage: string;
   title: string;
   author: string;
   quote?: string;
+  onHoverChange?: (hovered: boolean) => void;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -27,8 +29,8 @@ function OpenableBook({
     <div
       className="relative w-[280px] md:w-[320px] cursor-pointer"
       style={{ perspective: "1600px" }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => { setHovered(true); onHoverChange?.(true); }}
+      onMouseLeave={() => { setHovered(false); onHoverChange?.(false); }}
     >
       {/* Whole book wrapper */}
       <div
@@ -179,6 +181,7 @@ function OpenableBook({
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const pausedRef = useRef(false);
 
   const next = useCallback(() => {
     setDirection(1);
@@ -190,9 +193,11 @@ export default function HeroSlider() {
     setCurrent((prev) => (prev - 1 + heroBooks.length) % heroBooks.length);
   }, []);
 
-  // Auto-advance
+  // Auto-advance (pauses when book is hovered)
   useEffect(() => {
-    const timer = setInterval(next, 6000);
+    const timer = setInterval(() => {
+      if (!pausedRef.current) next();
+    }, 6000);
     return () => clearInterval(timer);
   }, [next]);
 
@@ -352,6 +357,7 @@ export default function HeroSlider() {
                   title={book.title}
                   author={book.author}
                   quote={book.quote}
+                  onHoverChange={(h) => { pausedRef.current = h; }}
                 />
               </motion.div>
             </AnimatePresence>
