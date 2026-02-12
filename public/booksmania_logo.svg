@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123.12 106.59">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #0071bc;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        fill: #0071bc;
+      }
+
+      .cls-3 {
+        font-size: 26px;
+        fill: #09537c;
+        font-family: Pacifico;
+      }
+    </style>
+  </defs>
+  <title>mainLogo</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="mainLogo">
+      <g id="mainLogo-2" data-name="mainLogo">
+        <g id="plane">
+          <g id="main">
+            <polygon class="cls-1" points="95.66 2.92 87.02 51.84 73.92 46.89 64.11 57.46 63.95 57.44 63.81 57.42 58.13 40.93 41.28 34.57 95.66 2.92"/>
+            <polyline class="cls-1" points="58.13 40.86 95.66 2.92 66.48 43.51 63.91 57.44"/>
+            <line class="cls-1" x1="66.54" y1="43.57" x2="73.92" y2="46.89"/>
+          </g>
+          <g id="dots">
+            <rect class="cls-2" x="35.28" y="65.13" width="7" height="3" rx="0.74"/>
+            <rect class="cls-2" x="24.57" y="61.58" width="7" height="3" rx="0.74" transform="translate(35.3 -5.58) rotate(30)"/>
+            <rect class="cls-2" x="48.52" y="62.13" width="7" height="3" rx="0.74" transform="translate(-27.27 42) rotate(-35.47)"/>
+          </g>
+        </g>
+        <text class="cls-3" transform="translate(0 94.78)">booksmania</text>
+      </g>
+    </g>
+  </g>
+</svg>
