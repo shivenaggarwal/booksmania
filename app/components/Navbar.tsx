@@ -15,10 +15,10 @@ import Logo from "./Logo";
 
 const navLinks = [
   { href: "/", label: "HOME" },
-  { href: "/about", label: "ABOUT" },
   { href: "/books", label: "SHOP" },
-  { href: "/categories/fiction", label: "FICTION" },
-  { href: "/categories/sci-fi", label: "SCI-FI" },
+  { href: "/blog", label: "BLOG" },
+  { href: "/compare", label: "COMPARE" },
+  { href: "/recommend", label: "AI PICKS" },
 ];
 
 export default function Navbar() {

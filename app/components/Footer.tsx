@@ -9,6 +9,11 @@ import Logo from "./Logo";
 const footerLinks = {
   Explore: [
     { label: "Books", href: "/books" },
+    { label: "Blog", href: "/blog" },
+    { label: "Comparisons", href: "/compare" },
+    { label: "AI Recommender", href: "/recommend" },
+  ],
+  Categories: [
     { label: "Fiction", href: "/categories/fiction" },
     { label: "Sci-Fi", href: "/categories/sci-fi" },
     { label: "Self-Help", href: "/categories/self-help" },
@@ -17,11 +22,7 @@ const footerLinks = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "#" },
     { label: "Affiliate Disclosure", href: "/about" },
-  ],
-  Support: [
-    { label: "Help Center", href: "#" },
     { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Use", href: "#" },
   ],
 };
 

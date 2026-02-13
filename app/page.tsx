@@ -7,10 +7,23 @@ import HeroSlider from "@/app/components/HeroSlider";
 import BookCarousel from "@/app/components/BookCarousel";
 import CategoryGrid from "@/app/components/CategoryGrid";
 import BookCard from "@/app/components/BookCard";
+import BlogCard from "@/app/components/BlogCard";
+import ComparisonCard from "@/app/components/ComparisonCard";
 import Reveal from "@/app/components/Reveal";
 import { trendingBooks, staffPicks, featuredBooks } from "@/lib/books";
-import { BookOpen, Sparkles, Heart } from "lucide-react";
+import { blogPosts } from "@/lib/blog";
+import { comparisonArticles } from "@/lib/comparisons";
+import {
+  BookOpen,
+  Sparkles,
+  Heart,
+  Newspaper,
+  GitCompareArrows,
+  ArrowRight,
+  Brain,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const ThreeBackground = dynamic(
   () => import("@/app/components/ThreeBackground"),
@@ -189,7 +202,131 @@ export default function HomePage() {
       />
       <CategoryGrid />
       <FeaturedBanner />
+
+      {/* AI Recommender CTA */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-sm bg-gradient-to-br from-accent/5 to-accent/10 border border-accent/10 p-10 md:p-16 text-center">
+              <motion.div
+                className="absolute -top-20 -right-20 w-80 h-80 rounded-full border border-accent/10"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              />
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                  <Brain size={28} className="text-accent" />
+                </div>
+                <p className="label-uppercase mb-3 text-accent">
+                  AI-Powered
+                </p>
+                <h2 className="heading-serif text-3xl md:text-5xl text-text-primary mb-4">
+                  Not sure what to read next?
+                </h2>
+                <p className="text-text-secondary text-sm md:text-base max-w-lg mx-auto mb-8 leading-relaxed">
+                  Tell us your mood, your goal, and what you last read. Our
+                  AI recommender will find your perfect book match in
+                  seconds.
+                </p>
+                <Link
+                  href="/recommend"
+                  className="inline-flex items-center gap-3 bg-accent text-white px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-accent-hover transition-colors duration-500"
+                >
+                  <Sparkles size={14} />
+                  Get Recommendations
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <StaffPicksSection />
+
+      {/* Blog Preview */}
+      <section className="py-20 md:py-28 bg-surface-warm/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <Reveal>
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Newspaper size={14} className="text-accent" />
+                  <p className="label-uppercase">From the Blog</p>
+                </div>
+                <h2 className="heading-serif text-3xl md:text-4xl text-text-primary">
+                  Latest Reading Guides
+                </h2>
+              </div>
+              <Link
+                href="/blog"
+                className="hidden md:flex items-center gap-2 text-xs tracking-wider uppercase text-accent hover:text-accent-hover transition-colors"
+              >
+                View All
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {blogPosts.slice(0, 3).map((post, i) => (
+              <BlogCard key={post.slug} post={post} index={i} />
+            ))}
+          </div>
+          <div className="mt-8 text-center md:hidden">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-xs tracking-wider uppercase text-accent"
+            >
+              View All Articles
+              <ArrowRight size={13} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparisons Preview */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <Reveal>
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <GitCompareArrows size={14} className="text-accent" />
+                  <p className="label-uppercase">Book Comparisons</p>
+                </div>
+                <h2 className="heading-serif text-3xl md:text-4xl text-text-primary">
+                  Which Book Should You Read?
+                </h2>
+              </div>
+              <Link
+                href="/compare"
+                className="hidden md:flex items-center gap-2 text-xs tracking-wider uppercase text-accent hover:text-accent-hover transition-colors"
+              >
+                View All
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {comparisonArticles.slice(0, 2).map((article, i) => (
+              <ComparisonCard
+                key={article.slug}
+                article={article}
+                index={i}
+              />
+            ))}
+          </div>
+          <div className="mt-8 text-center md:hidden">
+            <Link
+              href="/compare"
+              className="inline-flex items-center gap-2 text-xs tracking-wider uppercase text-accent"
+            >
+              View All Comparisons
+              <ArrowRight size={13} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <WhyBooksmania />
     </>
   );
