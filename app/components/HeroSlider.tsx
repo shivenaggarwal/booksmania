@@ -34,8 +34,7 @@ function OpenableBook({
     >
       {/* Whole book wrapper */}
       <div
-        className="relative aspect-[2/3]"
-        style={{ transformStyle: "preserve-3d" }}
+        className="relative aspect-[2/3] preserve-3d"
       >
         {/* ── INNER PAGE (quote page, revealed when cover opens) ── */}
         <motion.div
@@ -95,10 +94,9 @@ function OpenableBook({
 
         {/* ── FRONT COVER (swings fully open behind the book) ── */}
         <motion.div
-          className="absolute inset-0 rounded-sm book-shadow"
+          className="absolute inset-0 rounded-sm book-shadow preserve-3d"
           style={{
             transformOrigin: "left center",
-            transformStyle: "preserve-3d",
           }}
           initial={false}
           animate={{
@@ -110,7 +108,7 @@ function OpenableBook({
           }}
         >
           {/* Front face — the cover image */}
-          <div className="absolute inset-0 rounded-sm overflow-hidden" style={{ backfaceVisibility: "hidden" }}>
+          <div className="absolute inset-0 rounded-sm overflow-hidden backface-hidden">
             <Image
               src={coverImage}
               alt={title}
@@ -131,9 +129,8 @@ function OpenableBook({
 
           {/* Back face of the cover (visible as it swings open) */}
           <div
-            className="absolute inset-0 rounded-sm bg-white"
+            className="absolute inset-0 rounded-sm bg-white backface-hidden"
             style={{
-              backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
             }}
           />
